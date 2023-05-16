@@ -35,6 +35,18 @@ const resetSelected = () => {
   allGameIcons.forEach((icon) =>  icon.classList.remove('selected'))
 }
 
+// Reset Score and playerChoice/computerChoice
+const resetAll = () => {
+  playerScoreNumber = 0
+  computerScoreNumber = 0
+  playerScoreEl.textContent = playerScoreNumber
+  computerScoreEl.textContent = computerScoreNumber
+  playerChoiceEl.textContent = ''
+  computerChoiceEl.textContent = ''
+  resultText.textContent = ''
+  resetSelected()
+}
+
 const computerRandomChoice = () => {
   const computerChoiceNumber = Math.floor(Math.random()*5)
   if(computerChoiceNumber === 0)  computerChoice = 'rock'
@@ -74,13 +86,13 @@ const displayComputerChoice = () => {
 
 // Check result 
 const updateScore = (playerChoice) => {
-  console.log(playerChoice, computerChoice)
+  // console.log(playerChoice, computerChoice)
   if (playerChoice === computerChoice) {
     resultText.textContent = "It's a tie."
   }
   else {
     const choice = choices[playerChoice]
-    console.log(choice.defeats.indexOf(computerChoice))
+    // console.log(choice.defeats.indexOf(computerChoice))
     if(choice.defeats.indexOf(computerChoice) > -1) {
       resultText.textContent = "You Won!"
       playerScoreNumber++;
